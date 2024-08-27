@@ -1,5 +1,6 @@
 import React from "react";
 import { Nav } from "./Nav";
+import Link from "next/link";
 
 const paths = {};
 
@@ -9,7 +10,9 @@ export const Header = () => {
       <div>Logo</div>
       <Nav />
       <div>
-        <button className="border-2 p-2 bg-white rounded-lg">Sign in</button>
+        <Link href="/signin">
+          <button className="border-2 p-2 bg-white rounded-lg">Sign in</button>
+        </Link>
       </div>
     </div>
   );
