@@ -29,7 +29,7 @@ const Destinations = ({ travels }: TravelProps) => {
                 <img
                   src={travel.image}
                   alt={travel.title}
-                  className="mt-2 w-full h-auto rounded"
+                  className="mt-2 w-full h-28 rounded"
                 />
               )}
             </div>
