@@ -13,7 +13,7 @@ interface TravelProps {
 }
 
 const Destinations = ({ travels }: TravelProps) => {
-  console.log("inages", travels[0].image);
+  console.log("traveldata", travels);
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <h2 className="mb-4 text-2xl font-bold text-gray-700">

@@ -1,27 +1,19 @@
 import React from "react";
-import { GetServerSideProps } from "next";
-import { axiosInstance } from "@/utils/axiosInstance";
 
-const AdminDashboard = ({ isAdmin }: { isAdmin: Boolean }) => {
-  return <div>Hello Admin dashboard</div>;
-};
+interface UserProps {
+  users: [
+    {
+      _id: string;
+      name: string;
+      email: string;
+      password: string;
+      isAdmin: boolean;
+    }
+  ];
+}
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  try {
-    const res = await axiosInstance.get("/users");
-    return {
-      props: {
-        isAdmin: res.data.isAdmin,
-      },
-    };
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    return {
-      props: {
-        isAdmin: false,
-      },
-    };
-  }
+const AdminDashboard = () => {
+  return <div>Hello Admin dashboard USers: </div>;
 };
 
 export default AdminDashboard;
