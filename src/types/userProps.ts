@@ -1,11 +1,7 @@
 export interface UserProps {
-  users: [
-    {
-      _id: string;
-      name: string;
-      email: string;
-      password: string;
-      isAdmin: boolean;
-    }
-  ];
+  user: {
+    name: string;
+    email: string;
+    isAdmin: boolean;
+  };
 }

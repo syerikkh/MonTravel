@@ -1,11 +1,16 @@
+import { GetServerSideProps } from "next";
 import { Inter } from "next/font/google";
 import Image from "next/image";
+import cookie from "cookie";
+import axios from "axios";
+import { UserProps } from "@/types/userProps";
+import Layout from "@/components/Layout";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function Home({ user }: UserProps) {
   return (
-    <div>
+    <Layout user={user}>
       <div className="mt-10">
         <h1 className="font-bold text-3xl text-center">Popular Destinations</h1>
         <div className="flex justify-between mt-10 mb-10">
@@ -50,6 +55,41 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { req } = context;
+  const cookies = cookie.parse(req.headers.cookie || "");
+  const token = cookies.jwt;
+
+  if (!token) {
+    return {
+      props: {
+        user: null,
+      },
+    };
+  }
+  try {
+    const response = await axios.get("http://localhost:8000/user", {
+      headers: {
+        Cookie: `jwt=${token}`,
+      },
+    });
+
+    const user = response.data.user;
+
+    return {
+      props: {
+        user,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        user: null,
+      },
+    };
+  }
+};
