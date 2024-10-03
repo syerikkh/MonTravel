@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { axiosInstance } from "@/utils/axiosInstance";
 
-const CreateTours = () => {
+const CreateTravels = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [price, setPrice] = useState<number | "">("");
   const [image, setImage] = useState<File | null>(null);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -15,6 +16,7 @@ const CreateTours = () => {
     const formData = new FormData();
     formData.append("title", title);
     formData.append("description", description);
+    formData.append("price", price.toString());
     if (image) {
       formData.append("image", image);
     }
@@ -80,6 +82,27 @@ const CreateTours = () => {
               required
             />
           </div>
+          <div className="mb-4">
+            <label
+              className="block mb-2 text-sm font-bold text-gray-700"
+              htmlFor="price"
+            >
+              Price
+            </label>
+            <div className="flex justify-center items-center gap-2">
+              <input
+                type="number"
+                id="price"
+                value={price}
+                onChange={(e) =>
+                  setPrice(e.target.value === "" ? "" : Number(e.target.value))
+                }
+                className="w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:border-blue-500"
+                required
+              />
+              ₮
+            </div>
+          </div>
           <div className="mb-6">
             <label
               className="block mb-2 text-sm font-bold text-gray-700"
@@ -112,4 +135,4 @@ const CreateTours = () => {
   );
 };
 
-export default CreateTours;
+export default CreateTravels;

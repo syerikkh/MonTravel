@@ -1,7 +1,5 @@
 export interface UserProps {
-  user: {
-    name: string;
-    email: string;
-    isAdmin: boolean;
-  };
+  name: string;
+  email: string;
+  isAdmin: boolean;
 }

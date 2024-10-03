@@ -5,7 +5,11 @@ import { UserProps } from "@/types/userProps";
 import { useRouter } from "next/router";
 import { axiosInstance } from "@/utils/axiosInstance";
 
-export const Header = ({ user }: UserProps) => {
+interface HeaderProps {
+  user: UserProps;
+}
+
+export const Header = ({ user }: HeaderProps) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 

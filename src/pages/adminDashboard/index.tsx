@@ -7,6 +7,7 @@ import React from "react";
 import cookie from "cookie";
 
 interface AdminDashboardProps extends UserProps {
+  user: UserProps;
   allUsers: [{ name: string; email: string }];
 }
 
@@ -14,16 +15,22 @@ const AdminDashboard = ({ user, allUsers }: AdminDashboardProps) => {
   return (
     <Layout user={user}>
       <h1 className="text-3xl font-bold text-center my-4">Admin Dashboard</h1>
-      <h2 className="text-2xl font-bold my-4">List of all users:</h2>
-      <ul>
-        {allUsers.map((user, index) => (
-          <li key={index}>
-            {user.name} - {user.email}
-          </li>
-        ))}
-      </ul>
-      <h2 className="text-2xl font-bold my-4">Travel Data:</h2>
-      <CreateTours />
+      <div className="flex justify-between mt-10">
+        <div className="flex flex-col">
+          <h2 className="text-2xl font-bold my-4">List of all users:</h2>
+          <ul>
+            {allUsers.map((user, index) => (
+              <li key={index}>
+                {user.name} - {user.email}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="flex flex-col">
+          <h2 className="text-2xl font-bold my-4">Travel Data:</h2>
+          <CreateTours />
+        </div>
+      </div>
     </Layout>
   );
 };

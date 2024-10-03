@@ -9,28 +9,16 @@ const links = [
     path: "/",
   },
   {
-    name: "destinations",
-    path: "/destinations",
-  },
-  {
-    name: "tours",
-    path: "/tours",
-  },
-  {
-    name: "about",
-    path: "/about",
-  },
-  {
-    name: "blog",
-    path: "/blog",
-  },
-  {
-    name: "contact",
-    path: "/contact",
+    name: "travels",
+    path: "/travels",
   },
 ];
 
-export const Nav = ({ user }: UserProps) => {
+interface NavProps {
+  user: UserProps;
+}
+
+export const Nav = ({ user }: NavProps) => {
   const pathname = usePathname();
   return (
     <div className="flex gap-8">

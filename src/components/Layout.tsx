@@ -2,7 +2,8 @@ import React from "react";
 import { UserProps } from "@/types/userProps";
 import { Header } from "./Header";
 
-interface LayoutProps extends UserProps {
+interface LayoutProps {
+  user: UserProps;
   children: React.ReactNode;
 }
 

@@ -12,7 +12,7 @@ export default function Home({ user }: UserProps) {
   return (
     <Layout user={user}>
       <div className="mt-10">
-        <h1 className="font-bold text-3xl text-center">Popular Destinations</h1>
+        <h1 className="font-bold text-3xl text-center">Popular Travels</h1>
         <div className="flex justify-between mt-10 mb-10">
           <div>
             <div className="w-[300px] bg-white h-[250px] relative">
