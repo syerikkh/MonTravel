@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { axiosInstance } from "@/utils/axiosInstance";
+import Toast from "./Toast";
 
 const CreateTravels = () => {
   const [title, setTitle] = useState("");
@@ -12,7 +13,7 @@ const CreateTravels = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-
+    setMessage("");
     const formData = new FormData();
     formData.append("title", title);
     formData.append("description", description);
@@ -28,8 +29,11 @@ const CreateTravels = () => {
         },
       });
       if (response.status === 201) {
-        console.log("Successfully created travel");
         setMessage("Successfully created travel!");
+        setTitle("");
+        setDescription("");
+        setPrice("");
+        setImage(null);
       }
     } catch (error: any) {
       console.log(
@@ -48,7 +52,7 @@ const CreateTravels = () => {
         <h2 className="mb-4 text-2xl font-bold text-center text-gray-700">
           Create Travel
         </h2>
-        {message && <p className="mb-4 text-center text-red-500">{message}</p>}
+        {message && <Toast message={message} onClose={() => setMessage("")} />}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
@@ -62,7 +66,7 @@ const CreateTravels = () => {
               id="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:border-blue-500"
+              className="w-full text-black px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:border-blue-500"
               required
             />
           </div>
@@ -78,7 +82,7 @@ const CreateTravels = () => {
               id="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:border-blue-500"
+              className="w-full text-black px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:border-blue-500"
               required
             />
           </div>
@@ -97,7 +101,7 @@ const CreateTravels = () => {
                 onChange={(e) =>
                   setPrice(e.target.value === "" ? "" : Number(e.target.value))
                 }
-                className="w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:border-blue-500"
+                className="w-full text-black px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:border-blue-500"
                 required
               />
               ₮
@@ -118,7 +122,7 @@ const CreateTravels = () => {
                   setImage(e.target.files[0]);
                 }
               }}
-              className="w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:border-blue-500"
+              className="w-full text-black px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:border-blue-500"
               required
             />
           </div>

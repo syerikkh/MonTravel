@@ -36,13 +36,13 @@ export const Header = ({ user }: HeaderProps) => {
         {user ? (
           <button
             onClick={handleSignOut}
-            className="border-2 p-2 bg-white rounded-lg"
+            className="border-2 p-2 text-black bg-white rounded-lg"
           >
             {loading ? "Signing out..." : "Sign out"}
           </button>
         ) : (
           <Link href="/signin">
-            <button className="border-2 p-2 bg-white rounded-lg">
+            <button className="border-2 p-2 bg-white text-black rounded-lg">
               Sign in
             </button>
           </Link>
