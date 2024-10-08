@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: "https://travelbackend-clp4.onrender.com",
   withCredentials: true,
 });

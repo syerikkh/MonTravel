@@ -7,6 +7,7 @@ import { UserProps } from "@/types/userProps";
 import Layout from "@/components/Layout";
 import { axiosInstance } from "@/utils/axiosInstance";
 import { TravelProps } from "@/types/travelProps";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,17 +24,19 @@ export default function Home({ user, travelData }: HomePageProps) {
         <div className="flex justify-between mt-10 mb-10">
           {travelData.map((travel) => (
             <div key={travel._id}>
-              <div className="w-[300px] bg-white h-[250px] relative rounded-xl">
-                <Image
-                  src={travel.image}
-                  alt={travel.title}
-                  sizes=""
-                  priority
-                  fill
-                  quality={100}
-                  className="rounded-xl"
-                />
-              </div>
+              <Link key={travel._id} href={`/travels/${travel._id}`}>
+                <div className="w-[300px] bg-white h-[250px] relative rounded-xl">
+                  <Image
+                    src={travel.image}
+                    alt={travel.title}
+                    sizes=""
+                    priority
+                    fill
+                    quality={100}
+                    className="rounded-xl"
+                  />
+                </div>
+              </Link>
               <h1 className="text-xl font-semibold text-center mt-2">
                 {travel.title}
               </h1>
@@ -52,14 +55,18 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   let user = null;
   let travelData: TravelProps[] = [];
-
+  console.log("token", token);
   if (token) {
     try {
-      const response = await axios.get("http://localhost:8000/user", {
-        headers: {
-          Cookie: `jwt=${token}`,
-        },
-      });
+      const response = await axios.get(
+        "https://travelbackend-clp4.onrender.com/user",
+        {
+          headers: {
+            Cookie: `jwt=${token}`,
+          },
+          withCredentials: true,
+        }
+      );
       user = response.data.user;
     } catch (error) {
       console.error("Error fetching user data:", error);

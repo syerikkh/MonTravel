@@ -48,14 +48,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   try {
     const [userResponse, usersResponse] = await Promise.all([
-      axios.get("http://localhost:8000/user", {
+      axios.get("https://travelbackend-clp4.onrender.com/user", {
         headers: {
           Cookie: `jwt=${token}`,
+          withCredentials: true,
         },
       }),
-      axios.get("http://localhost:8000/adminDashboard", {
+      axios.get("https://travelbackend-clp4.onrender.com/adminDashboard", {
         headers: {
           Cookie: `jwt=${token}`,
+          withCredentials: true,
         },
       }),
     ]);

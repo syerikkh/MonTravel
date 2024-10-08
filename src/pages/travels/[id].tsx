@@ -58,11 +58,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     let user = null;
     if (token) {
-      const userResponse = await axios.get("http://localhost:8000/user", {
-        headers: {
-          Cookie: `jwt=${token}`,
-        },
-      });
+      const userResponse = await axios.get(
+        "https://travelbackend-clp4.onrender.com/user",
+        {
+          headers: {
+            Cookie: `jwt=${token}`,
+          },
+          withCredentials: true,
+        }
+      );
       user = userResponse.data.user;
     }
     return {
