@@ -59,7 +59,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     let user = null;
     if (token) {
       const userResponse = await axios.get(
-        "https://travelbackend-qoc8.onrender.com/user",
+        "https://travelbackend-9tta.onrender.com/user",
         {
           headers: {
             Cookie: `jwt=${token}`,

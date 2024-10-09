@@ -91,13 +91,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   try {
     const [userResponse, cartResponse] = await Promise.all([
-      axios.get("https://travelbackend-qoc8.onrender.com/user", {
+      axios.get("https://travelbackend-9tta.onrender.com/user", {
         headers: {
           Cookie: `jwt=${token}`,
           withCredentials: true,
         },
       }),
-      axios.get("https://travelbackend-qoc8.onrender.com/user/cart", {
+      axios.get("https://travelbackend-9tta.onrender.com/user/cart", {
         headers: {
           Cookie: `jwt=${token}`,
           withCredentials: true,
