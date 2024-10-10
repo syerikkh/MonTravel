@@ -19,9 +19,9 @@ interface HomePageProps {
 export default function Home({ user, travelData }: HomePageProps) {
   return (
     <Layout user={user}>
-      <div className="mt-10">
+      <div className="mt-10 flex items-center flex-col">
         <h1 className="font-bold text-3xl text-center">Popular Travels</h1>
-        <div className="flex justify-between mt-10 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10 mb-10">
           {travelData.map((travel) => (
             <div key={travel._id}>
               <Link key={travel._id} href={`/travels/${travel._id}`}>

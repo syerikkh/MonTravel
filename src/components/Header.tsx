@@ -30,7 +30,7 @@ export const Header = ({ user }: HeaderProps) => {
   };
 
   return (
-    <div className="flex justify-between items-center py-8">
+    <div className="flex justify-between items-center py-8 px-5 ">
       <div>Logo</div>
       <Nav user={user} />
       <div>
