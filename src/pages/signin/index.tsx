@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { axiosInstance } from "@/utils/axiosInstance";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -20,6 +21,8 @@ const Signin = () => {
         password,
       });
       if (response.status === 200) {
+        const token = response.data.token;
+        Cookies.set("jwt", token);
         console.log("Successfully signed in");
         setMessage("Successfully signed in! Redirecting to home page...");
         setTimeout(() => {

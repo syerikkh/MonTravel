@@ -48,13 +48,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   try {
     const [userResponse, usersResponse] = await Promise.all([
-      axios.get("https://travelbackend-9tta.onrender.com/user", {
+      axios.get("https://travelbackend-h4iy.onrender.com/user", {
         headers: {
           Cookie: `jwt=${token}`,
           withCredentials: true,
         },
       }),
-      axios.get("https://travelbackend-9tta.onrender.com/adminDashboard", {
+      axios.get("https://travelbackend-h4iy.onrender.com/adminDashboard", {
         headers: {
           Cookie: `jwt=${token}`,
           withCredentials: true,

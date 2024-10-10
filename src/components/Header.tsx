@@ -4,6 +4,7 @@ import Link from "next/link";
 import { UserProps } from "@/types/userProps";
 import { useRouter } from "next/router";
 import { axiosInstance } from "@/utils/axiosInstance";
+import Cookies from "js-cookie";
 
 interface HeaderProps {
   user: UserProps;
@@ -17,8 +18,8 @@ export const Header = ({ user }: HeaderProps) => {
     setLoading(true);
     try {
       await axiosInstance.post("/signout");
-      console.log("past axios");
       setTimeout(() => {
+        Cookies.remove("jwt");
         router.push("/");
         setLoading(false);
       }, 2000);
